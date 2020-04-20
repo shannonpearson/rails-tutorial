@@ -7,13 +7,17 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def new # nothing happens if this is removed so what is it doing?
+  def new
+    @article = Article.new
   end 
 
   def create
     @article = Article.new(article_params) # initialize Article model - defined in models/article.rb
-    @article.save
-    redirect_to @article
+    if @article.save
+      redirect_to @article
+    else
+      render 'new'
+    end
   end
 
   private
