@@ -3,8 +3,13 @@ class ArticlesController < ApplicationController
   end 
 
   def create
-    @article = Article.new(params.require(:article).permit(:title, :text)) # initialize Article model - defined in models/article.rb; specify allowed parameters ('strong parameters') for security
+    @article = Article.new(article_params) # initialize Article model - defined in models/article.rb
     @article.save
     redirect_to @article
+  end
+
+  private
+  def article_params
+    params.require(:article).permit(:title, :text) #specify allowed parameters ('strong parameters') for security
   end
 end
