@@ -1,17 +1,19 @@
 <h1>This is the new article view</h1>
 <%= form_with scope: :article, url: articles_path, local: true do |form| %>
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
+<p>
+  <%= form.label :title %><br>
+  <%= form.text_field :title %>
+</p>
+<p>
+  <%= form.label :text %><br>
+  <%= form.text_area :text %>
+</p>
 
-  <p>
-   <%= form.submit %>
-  </p>
+<p>
+  <%= form.submit %>
+</p>
 <% end %>
 
 <%# why does this form default to a POST request %>
+
+<%= link_to 'Back', articles_path %>
