@@ -1,0 +1,33 @@
+<%= form_with model: @article, local: true do |form| %>
+<%# this form_with declaration is basically the only difference between this and the former new/edit forms.
+@article is a resource corresponding to a full set of RESTful routes. rails can infer which URI and method to use %>
+
+<% if @article.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@article.errors.count, "error") %> prohibited
+    this article from being saved:
+  </h2>
+  <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<p>
+  <%= form.label :title %><br>
+  <%= form.text_field :title %>
+</p>
+
+<p>
+  <%= form.label :text %><br>
+  <%= form.text_area :text %>
+</p>
+
+<p>
+  <%= form.submit %>
+</p>
+
+<% end %>
