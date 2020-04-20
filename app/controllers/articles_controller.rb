@@ -35,6 +35,14 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy # on /articles/:id DELETE route call from
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to articles_path
+  end
+  # we don't need a view for this action since we're redirecting to the index action
+
   private
   def article_params
     params.require(:article).permit(:title, :text) # specify allowed parameters ('strong parameters') for security on create or update
