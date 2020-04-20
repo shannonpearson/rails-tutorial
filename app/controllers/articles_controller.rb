@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
   end 
 
   def create
-    render plain: params[:article].inspect # simple hash with key of plain
-    # this displays: <ActionController::Parameters {"title"=>"test", "text"=>"hi"} permitted: false>
+    @article = Article.new(params.require(:article).permit(:title, :text)) # initialize Article model - defined in models/article.rb; specify allowed parameters ('strong parameters') for security
+    @article.save
+    redirect_to @article
   end
 end
