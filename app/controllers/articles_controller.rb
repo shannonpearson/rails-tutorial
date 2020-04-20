@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+  def show
+    @article = Article.find(params[:id])
+  end
+
   def new # nothing happens if this is removed so what is it doing?
   end 
 
